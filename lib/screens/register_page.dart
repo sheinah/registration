@@ -66,10 +66,10 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget address() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [],
-    );
-  }
+  // Widget address() {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //     children: [],
+  //   );
+  // }
 }
