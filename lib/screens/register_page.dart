@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:registration/app_values/app_colors.dart';
 import 'package:registration/app_values/double_size.dart';
+import 'package:registration/widgets/form_widget.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -11,12 +11,17 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _surnameController = TextEditingController();
+  final TextEditingController _thainameController = TextEditingController();
+  final TextEditingController _thaisurnameController = TextEditingController();
+  final TextEditingController _houseNumberController = TextEditingController();
+  final TextEditingController _villageNumberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: thirty, vertical: fifty),
+        padding: const EdgeInsets.symmetric(horizontal: fifty, vertical: fifty),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -26,7 +31,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 style: TextStyle(fontSize: fontTwenty, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: thirty),
-              nameForm(),
+              englishName(),
+              thaiName(),
+              addressForm(
+                context,
+                'Address: ',
+                _houseNumberController,
+                _villageNumberController,
+              ),
             ],
           ),
         ),
@@ -34,36 +46,30 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget nameForm() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+  Widget englishName() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        RichText(
-          text: TextSpan(
-            text: 'Name ',
-            children: [
-              TextSpan(
-                text: '*',
-                style: TextStyle(color: red),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: ten),
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: grey),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: TextFormField(
-            controller: _nameController,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: 'Name',
-            ),
-          ),
-        ),
+        nameForm(context, 'English Name ', 'Name', _nameController),
+        nameForm(context, 'English Surname ', 'Surname', _surnameController),
       ],
+    );
+  }
+
+  Widget thaiName() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        nameForm(context, 'ชื่อภาษาไทย ', 'ชื่อ', _thainameController),
+        nameForm(context, 'นามสกุลภาษาไทย ', 'นามสกุล', _thaisurnameController),
+      ],
+    );
+  }
+
+  Widget address() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [],
     );
   }
 }
