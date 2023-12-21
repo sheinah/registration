@@ -3,11 +3,19 @@ import 'package:registration/app_values/double_size.dart';
 
 import '../app_values/app_colors.dart';
 
+final TextEditingController _houseNumberController = TextEditingController();
+final TextEditingController _villageNumberController = TextEditingController();
+final TextEditingController _villageName = TextEditingController();
+final TextEditingController _subStreetName = TextEditingController();
+final TextEditingController _streetName = TextEditingController();
+final TextEditingController _subDistrictName = TextEditingController();
+
 Widget nameForm(
   BuildContext context,
   String title,
   String hint,
   TextEditingController controller,
+  Color color,
 ) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: ten),
@@ -30,7 +38,7 @@ Widget nameForm(
           padding: const EdgeInsets.symmetric(horizontal: ten),
           width: MediaQuery.of(context).size.width / 2.3,
           decoration: BoxDecoration(
-            border: Border.all(color: grey),
+            border: Border.all(color: color),
             borderRadius: BorderRadius.circular(10),
           ),
           child: TextFormField(
@@ -49,8 +57,6 @@ Widget nameForm(
 Widget addressForm(
   BuildContext context,
   String title,
-  TextEditingController controller,
-  TextEditingController controller1,
 ) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: ten),
@@ -74,24 +80,24 @@ Widget addressForm(
           context,
           'House Number',
           'Village Number',
-          controller,
-          controller1,
+          _houseNumberController,
+          _villageNumberController,
         ),
         const SizedBox(height: ten),
         addressDetails(
           context,
           'Village Name',
           'Sub street name',
-          controller,
-          controller1,
+          _villageName,
+          _subStreetName,
         ),
         const SizedBox(height: ten),
         addressDetails(
           context,
           'Street Name',
           'Sub district name',
-          controller,
-          controller1,
+          _streetName,
+          _subDistrictName,
         ),
       ],
     ),
