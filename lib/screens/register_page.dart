@@ -95,10 +95,16 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget submitButton() {
     return TextButton(
-        style: TextButton.styleFrom(
-          backgroundColor: Colors.green,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(ten),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.resolveWith<Color>(
+            (Set<MaterialState> states) {
+              if (states.contains(MaterialState.pressed)) {
+                // Return red color for pressed state.
+                return Colors.grey;
+              }
+              // Return the default color for other states.
+              return Colors.green;
+            },
           ),
         ),
         onPressed: () {

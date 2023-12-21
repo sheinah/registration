@@ -11,9 +11,11 @@ class CountryPicker extends StatefulWidget {
   State<CountryPicker> createState() => _CountryPickerState();
 }
 
+final GlobalKey<CSCPickerState> _cscPickerKey = GlobalKey();
+
 class _CountryPickerState extends State<CountryPicker> {
-  final GlobalKey<CSCPickerState> _cscPickerKey = GlobalKey();
   final TextEditingController _zipcode = TextEditingController();
+  String get zipCode => _zipcode.text;
 
   String countryValue = "";
   String provinceValue = "";
