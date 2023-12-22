@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:registration/screens/login_page.dart';
 import 'package:registration/screens/register_page.dart';
 
 void main() {
@@ -18,6 +19,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const RegisterPage(),
+      routes: {
+        LoginPage.routeName: (context) => const LoginPage(),
+        RegisterPage.routeName: (context) => const RegisterPage(),
+      },
     );
   }
 }

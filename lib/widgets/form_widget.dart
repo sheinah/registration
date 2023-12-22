@@ -36,7 +36,7 @@ Widget nameForm(
         const SizedBox(height: ten),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: ten),
-          width: MediaQuery.of(context).size.width / 2.3,
+          width: MediaQuery.of(context).size.width / 2.2,
           decoration: BoxDecoration(
             border: Border.all(color: color),
             borderRadius: BorderRadius.circular(10),
@@ -116,7 +116,7 @@ Widget addressDetails(
     children: [
       Container(
         padding: const EdgeInsets.symmetric(horizontal: ten),
-        width: MediaQuery.of(context).size.width / 2.3,
+        width: MediaQuery.of(context).size.width / 2.2,
         decoration: BoxDecoration(
           border: Border.all(color: grey),
           borderRadius: BorderRadius.circular(10),
@@ -131,7 +131,7 @@ Widget addressDetails(
       ),
       Container(
         padding: const EdgeInsets.symmetric(horizontal: ten),
-        width: MediaQuery.of(context).size.width / 2.3,
+        width: MediaQuery.of(context).size.width / 2.2,
         decoration: BoxDecoration(
           border: Border.all(color: grey),
           borderRadius: BorderRadius.circular(10),

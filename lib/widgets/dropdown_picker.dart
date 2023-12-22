@@ -51,16 +51,16 @@ class _CountryPickerState extends State<CountryPicker> {
             countryDropdownLabel: "Country",
             selectedItemStyle: const TextStyle(
               color: Colors.black54,
-              fontSize: 14,
+              fontSize: fontFourteen,
             ),
             dropdownHeadingStyle: const TextStyle(
               color: black,
-              fontSize: 17,
+              fontSize: fontEighteen,
               fontWeight: FontWeight.bold,
             ),
             dropdownItemStyle: const TextStyle(
               color: black,
-              fontSize: 14,
+              fontSize: fontFourteen,
             ),
             dropdownDialogRadius: ten,
             searchBarRadius: ten,
@@ -86,7 +86,7 @@ class _CountryPickerState extends State<CountryPicker> {
             width: MediaQuery.of(context).size.width / 2.3,
             decoration: BoxDecoration(
               border: Border.all(color: grey),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(ten),
             ),
             child: TextFormField(
               keyboardType: TextInputType.number,

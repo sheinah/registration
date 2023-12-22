@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:registration/app_values/app_colors.dart';
 import 'package:registration/app_values/double_size.dart';
@@ -7,6 +8,7 @@ import 'package:registration/widgets/form_widget.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
+  static const routeName = "/register-page";
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -40,6 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 addressForm(context, 'Address: '),
                 const CountryPicker(),
                 const AgreementCheckBox(),
+                haveAccount(),
                 submitButton(),
               ],
             ),
@@ -93,27 +96,87 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget submitButton() {
-    return TextButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.resolveWith<Color>(
-            (Set<MaterialState> states) {
-              if (states.contains(MaterialState.pressed)) {
-                // Return red color for pressed state.
-                return Colors.grey;
-              }
-              // Return the default color for other states.
-              return Colors.green;
-            },
-          ),
+  Widget haveAccount() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: thirty),
+      child: RichText(
+        text: TextSpan(
+          text: "I have an account. ",
+          children: [
+            TextSpan(
+                text: "Sign in",
+                style: const TextStyle(
+                  color: green,
+                  fontWeight: FontWeight.w600,
+                  decoration: TextDecoration.underline,
+                ),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    Navigator.popAndPushNamed(context, "/log-in-page");
+                  }),
+          ],
         ),
-        onPressed: () {
-          checkError();
-        },
-        child: const Text(
-          "Submit",
-          style: TextStyle(color: white),
-        ));
+      ),
+    );
+  }
+
+  Widget submitButton() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton(
+            style: ButtonStyle(
+              shape: MaterialStatePropertyAll(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(ten),
+                ),
+              ),
+              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.pressed)) {
+                    // Return red color for pressed state.
+                    return Colors.grey;
+                  }
+                  // Return the default color for other states.
+                  return Colors.red;
+                },
+              ),
+            ),
+            onPressed: () {
+              Navigator.popAndPushNamed(context, "/log-in-page");
+            },
+            child: const Text(
+              "Cancel",
+              style: TextStyle(color: white),
+            )),
+        const SizedBox(width: ten),
+        TextButton(
+            style: ButtonStyle(
+              shape: MaterialStatePropertyAll(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(ten),
+                ),
+              ),
+              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.pressed)) {
+                    // Return red color for pressed state.
+                    return Colors.grey;
+                  }
+                  // Return the default color for other states.
+                  return Colors.green;
+                },
+              ),
+            ),
+            onPressed: () {
+              checkError();
+            },
+            child: const Text(
+              "Submit",
+              style: TextStyle(color: white),
+            )),
+      ],
+    );
   }
 
   void checkError() {
@@ -122,6 +185,8 @@ class _RegisterPageState extends State<RegisterPage> {
       setState(() {
         color = red;
       });
+    } else {
+      Navigator.popAndPushNamed(context, '/log-in-page');
     }
   }
 }
